@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import	java.util.List;
 import java.util.Optional;
 
+import com.example.SpringBoot_mybatis.enmu.ResultCode;
+import com.example.SpringBoot_mybatis.entity.Result;
 import com.example.SpringBoot_mybatis.entity.User;
 import com.example.SpringBoot_mybatis.service.UserService;
 import com.github.pagehelper.PageHelper;
@@ -33,17 +35,17 @@ public class UserController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public User selectOne(Integer id) {
+    public Result selectOne(Integer id) {
         User user = Optional.ofNullable(userService.queryById(id)).orElse(new User());
-        return user;
+        return Result.retOK(user);
     }
 
     @GetMapping("getAll")
-    public PageInfo<User> getAll(@RequestParam(defaultValue = "1") int pageNo,@RequestParam(defaultValue = "10") int pageSize) {
+    public Result getAll(@RequestParam(defaultValue = "1") int pageNo,@RequestParam(defaultValue = "10") int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
         PageInfo<User> userPageInfo = new PageInfo<>(userService.getAll());
         System.out.println(userPageInfo);
-        return userPageInfo;
+        return Result.retOK(userPageInfo);
     }
 
 }
