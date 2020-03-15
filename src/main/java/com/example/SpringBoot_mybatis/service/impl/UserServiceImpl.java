@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public Page<User> getAll() {
-        return userDao.getAll();
+    public Page<User> getAll(String username) {
+        return userDao.getAll(username);
     }
 
     /**

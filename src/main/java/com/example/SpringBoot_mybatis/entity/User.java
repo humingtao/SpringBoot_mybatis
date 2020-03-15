@@ -1,6 +1,7 @@
 package com.example.SpringBoot_mybatis.entity;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.io.Serializable;
@@ -11,7 +12,10 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-03-13 14:52:06
  */
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
+@Builder
 public class User implements Serializable {
     private static final long serialVersionUID = -50718597677119146L;
     
@@ -23,6 +27,7 @@ public class User implements Serializable {
     /**
     * 生日
     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date birthday;
     /**
     * 性别
@@ -32,4 +37,28 @@ public class User implements Serializable {
     * 地址
     */
     private String address;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 }

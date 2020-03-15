@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    Page<User> getAll();
+    Page<User> getAll(String username);
 
     /**
      * 通过ID查询单条数据

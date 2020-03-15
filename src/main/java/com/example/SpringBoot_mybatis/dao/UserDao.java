@@ -65,5 +65,5 @@ public interface UserDao {
      */
     int deleteById(Integer id);
 
-    Page<User> getAll();
+    Page<User> getAll(String username);
 }

@@ -52,6 +52,11 @@
 
     <select id="getAll" resultType="User">
         select * from mybatis.user
+        <where>
+            <if test="_parameter != null and _parameter != ''">
+                and username = #{username}
+            </if>
+        </where>
     </select>
 
     <!--新增所有列-->
