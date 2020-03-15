@@ -59,20 +59,16 @@ public class UserController {
 
     /**
      * 添加用户
-     * @param username
-     * @param birthday
-     * @param sex
-     * @param address
      * @return
      */
     @PutMapping("/addUser")
-    public Result addUser(@RequestParam String username, @RequestParam Date birthday, @RequestParam String sex, @RequestParam String address) {
-        User user = User.builder()
-                .username(username)
-                .birthday(birthday)
-                .sex(sex)
-                .address(address)
-                .build();
+    public Result addUser(User user) {
+//        User user = User.builder()
+//                .username(username)
+//                .birthday(birthday)
+//                .sex(sex)
+//                .address(address)
+//                .build();
         user =  userService.insert(user);
         return Result.retOK(user);
     }
