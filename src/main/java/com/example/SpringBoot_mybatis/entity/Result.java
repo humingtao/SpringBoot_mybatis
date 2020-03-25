@@ -14,11 +14,13 @@ public class Result<T> implements Serializable {
      * 正常响应码
      */
     private static final int SUCCESS_CODE = 200;
+    private static final int INTERNAL_SERVER_CODE = 500;
 
     /**
      * 正常响应消息
      */
     private static final String SUCCESS_MSG = "SUCCESS";
+    private static final String INTERNAL_SERVER_ERROR = "INTERNAL SERVER ERROR";
 
     /**
      * 错误码

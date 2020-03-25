@@ -1,7 +1,8 @@
 package com.example.SpringBoot_mybatis.enmu;
 
 public enum ResultCode {
-    SUCCESS(1,"接口成功");
+    SUCCESS(1,"接口成功"),
+    ERROR(401,"内部错误");
 
     private Integer code;
     private String message;

@@ -38,27 +38,4 @@ public class User implements Serializable {
     */
     private String address;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public String getAddress() {
-        return address;
-    }
 }

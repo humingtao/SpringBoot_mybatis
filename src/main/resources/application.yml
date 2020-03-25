@@ -1,4 +1,3 @@
-
 spring:
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/mybatis?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=UTC
