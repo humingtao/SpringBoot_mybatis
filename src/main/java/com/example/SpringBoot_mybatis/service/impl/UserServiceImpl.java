@@ -7,6 +7,7 @@ import com.github.pagehelper.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -70,6 +71,14 @@ public class UserServiceImpl implements UserService {
     public User update(User user) {
         this.userDao.update(user);
         return this.queryById(user.getId());
+    }
+
+    @Override
+    public User updateById(Integer id, Integer state) {
+        User user = this.userDao.queryById(id);
+        user.setIsActive(state);
+        Integer i = this.userDao.update(user);
+        return user;
     }
 
     /**

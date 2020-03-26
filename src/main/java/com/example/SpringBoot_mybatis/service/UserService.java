@@ -47,6 +47,7 @@ public interface UserService {
      * @return 实例对象
      */
     User update(User user);
+    User updateById(Integer id, Integer state);
 
     /**
      * 通过主键删除数据

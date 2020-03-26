@@ -61,6 +61,18 @@ public class UserController {
         return Result.retOK(flag);
     }
 
+    @UserLoginToken
+    @PutMapping("updateById")
+    public Result updateById(@RequestParam Integer id, @RequestParam Integer state) {
+        User user = userService.updateById(id,state);
+        boolean b = Optional.ofNullable(user).isPresent();
+        if (b) {
+            return Result.retOK(user);
+        } else {
+            return Result.retOK();
+        }
+    }
+
     /**
      * 分页查询
      * @param pageNo
@@ -69,9 +81,9 @@ public class UserController {
      */
     @UserLoginToken
     @GetMapping("getAll")
-    public Result getAll(@RequestParam(defaultValue = "1") int pageNo,@RequestParam(defaultValue = "10") int pageSize, @RequestParam(required = false) String username) {
+    public Result getAll(@RequestParam(defaultValue = "1") int pageNo,@RequestParam(defaultValue = "10") int pageSize, @RequestParam(required = false) String query) {
         PageHelper.startPage(pageNo, pageSize);
-        PageInfo<User> userPageInfo = new PageInfo<>(userService.getAll(username));
+        PageInfo<User> userPageInfo = new PageInfo<>(userService.getAll(query));
         System.out.println(userPageInfo);
         return Result.retOK(userPageInfo);
     }
@@ -82,12 +94,17 @@ public class UserController {
      */
     @UserLoginToken
     @PutMapping("/addUser")
-    public Result addUser(User user) {
+    public Result addUser(@RequestParam String username, @RequestParam(defaultValue = "2020-03-26 12:00:00") Date birthday,@RequestParam(defaultValue = "男") String sex,@RequestParam String address) {
+        User user = User.builder()
+                .username(username)
+                .birthday(birthday)
+                .sex(sex)
+                .address(address).build();
         user =  userService.insert(user);
         return Result.retOK(user);
     }
     /**
-     * 添加用户
+     * 更新用户
      * @return
      */
     @UserLoginToken

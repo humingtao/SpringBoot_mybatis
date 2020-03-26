@@ -37,5 +37,9 @@ public class User implements Serializable {
     * 地址
     */
     private String address;
+    /**
+     * 是否激活
+     */
+    private Integer isActive;
 
 }
