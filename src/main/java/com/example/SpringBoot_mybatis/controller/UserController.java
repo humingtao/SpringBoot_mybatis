@@ -1,6 +1,7 @@
 package com.example.SpringBoot_mybatis.controller;
 
 import com.example.SpringBoot_mybatis.annotation.UserLoginToken;
+import com.example.SpringBoot_mybatis.enmu.ResultCode;
 import com.example.SpringBoot_mybatis.entity.Result;
 import com.example.SpringBoot_mybatis.entity.User;
 import com.example.SpringBoot_mybatis.service.UserService;
@@ -15,6 +16,8 @@ import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -69,7 +72,7 @@ public class UserController {
         if (b) {
             return Result.retOK(user);
         } else {
-            return Result.retOK();
+            return Result.retFail(ResultCode.ERROR);
         }
     }
 
@@ -116,6 +119,18 @@ public class UserController {
         user.setAddress(address);
         user =  userService.update(user);
         return Result.retOK(user);
+    }
+
+    @GetMapping("/sexGroup")
+    public Result sexGroup() {
+        List<Map> map  = userService.sexGroup();
+        return Result.retOK(map);
+    }
+
+    @GetMapping("/ageGroup")
+    public Result ageGroup() {
+        List<Map> map  = userService.ageGroup();
+        return Result.retOK(map);
     }
 
     /**

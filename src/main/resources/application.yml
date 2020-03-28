@@ -13,6 +13,13 @@ server:
   port: 8081
 
 
+logging:
+  level:
+    com:
+      example:
+        SpringBoot_mybatis:
+          dao: debug
+
 pagehelper:
   helper-dialect: mysql
   params: count=countSql

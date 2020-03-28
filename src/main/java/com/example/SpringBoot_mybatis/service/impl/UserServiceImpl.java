@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (User)表服务实现类
@@ -91,4 +92,14 @@ public class UserServiceImpl implements UserService {
     public boolean deleteById(Integer id) {
         return this.userDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<Map> sexGroup() {
+        return this.userDao.sexGroup();
+    }
+    @Override
+    public List<Map> ageGroup() {
+        return this.userDao.ageGroup();
+    }
+
 }

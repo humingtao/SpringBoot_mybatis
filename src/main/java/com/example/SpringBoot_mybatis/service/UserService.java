@@ -4,6 +4,7 @@ import com.example.SpringBoot_mybatis.entity.User;
 import com.github.pagehelper.Page;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (User)表服务接口
@@ -57,4 +58,6 @@ public interface UserService {
      */
     boolean deleteById(Integer id);
 
+    List<Map> sexGroup();
+    List<Map> ageGroup();
 }

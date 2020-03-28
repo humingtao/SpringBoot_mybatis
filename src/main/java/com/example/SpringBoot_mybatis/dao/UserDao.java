@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (User)表数据库访问层
@@ -68,4 +69,7 @@ public interface UserDao {
     int deleteById(Integer id);
 
     Page<User> getAll(String username);
+
+    List<Map> sexGroup();
+    List<Map> ageGroup();
 }

@@ -2,6 +2,7 @@ package com.example.SpringBoot_mybatis.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.SpringBoot_mybatis.annotation.UserLoginToken;
+import com.example.SpringBoot_mybatis.enmu.ResultCode;
 import com.example.SpringBoot_mybatis.entity.Result;
 import com.example.SpringBoot_mybatis.entity.SysUser;
 import com.example.SpringBoot_mybatis.entity.User;
@@ -11,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Optional;
+
+import static com.example.SpringBoot_mybatis.enmu.ResultCode.ERROR;
 
 /**
  * 用户表(SysUser)表控制层
@@ -50,11 +54,24 @@ public class SysUserController {
      * 添加用户
      * @return
      */
-    @UserLoginToken
     @PutMapping("/addSysuser")
-    public Result addUser(SysUser sysUser) {
+    public Result addUser(@RequestParam String username,
+                          @RequestParam String password,
+                          @RequestParam String info) {
+        SysUser sysUser = SysUser.builder()
+                .userInfo(info)
+                .userName(username)
+                .userPassword(password)
+                .userEmail("454@qq.com")
+                .createTime(new Date())
+                .build();
         sysUser =  sysUserService.insert(sysUser);
-        return Result.retOK(sysUser);
+        boolean b = Optional.ofNullable(sysUser).isPresent();
+        if (b) {
+            return Result.retOK(sysUser);
+        } else {
+            return Result.retFail(ResultCode.ERROR);
+        }
     }
 
 
@@ -76,7 +93,7 @@ public class SysUserController {
             jsonObject.put("user", sysUser);
             return Result.retOK(jsonObject);
         } else {
-            return Result.retOK();
+            return Result.retFail(ERROR);
         }
     }
 

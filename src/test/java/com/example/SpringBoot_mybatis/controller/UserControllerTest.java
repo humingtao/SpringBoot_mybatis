@@ -21,7 +21,6 @@ public class UserControllerTest {
 
     @Test
     public void getAll() {
-
     }
 
     @Test

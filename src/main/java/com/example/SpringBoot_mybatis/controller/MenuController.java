@@ -65,13 +65,19 @@ public class MenuController {
 
         JSONObject jsonObjectChirden4 = new JSONObject();
         jsonObjectChirden4.put("id","113");
-        jsonObjectChirden4.put("authName","统计列表");
-        jsonObjectChirden4.put("path","anlisys");
+        jsonObjectChirden4.put("authName","以性别");
+        jsonObjectChirden4.put("path","analysis");
         jsonObjectChirden4.put("children",null);
+        JSONObject jsonObjectChirden5 = new JSONObject();
+        jsonObjectChirden5.put("id","114");
+        jsonObjectChirden5.put("authName","以年龄");
+        jsonObjectChirden5.put("path","useage");
+        jsonObjectChirden5.put("children",null);
         JSONArray jsonArray4 = new JSONArray();
         jsonArray4.add(jsonObjectChirden4);
+        jsonArray4.add(jsonObjectChirden5);
         jsonObject4.put("id","113");
-        jsonObject4.put("authName","统计模块");
+        jsonObject4.put("authName","人员分组");
         jsonObject4.put("path",null);
         jsonObject4.put("children",jsonArray4);
         jsonObject4.put("order","5");
