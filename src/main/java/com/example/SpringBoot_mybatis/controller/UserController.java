@@ -121,12 +121,14 @@ public class UserController {
         return Result.retOK(user);
     }
 
+    @UserLoginToken
     @GetMapping("/sexGroup")
     public Result sexGroup() {
         List<Map> map  = userService.sexGroup();
         return Result.retOK(map);
     }
 
+    @UserLoginToken
     @GetMapping("/ageGroup")
     public Result ageGroup() {
         List<Map> map  = userService.ageGroup();

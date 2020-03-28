@@ -63,19 +63,19 @@
     </select>
 
     <select id="sexGroup" resultMap="sexGroupMap">
-        select sex,COUNT(1) as total from mybatis.user group by sex
+        select sex,COUNT(1) as value from mybatis.user group by sex
     </select>
     <resultMap id="sexGroupMap" type="java.util.Map">
-        <result property="sex" column="sex" jdbcType="VARCHAR"/>
-        <result property="COUNT(1)" column="COUNT(1)" jdbcType="VARCHAR"/>
+        <result property="name" column="sex" jdbcType="VARCHAR"/>
+        <result property="value" column="value" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="ageGroup" resultMap="ageGroupMap">
-        SELECT TIMESTAMPDIFF(YEAR,birthday,NOW()) as age,count(1) FROM user GROUP BY age
+        SELECT TIMESTAMPDIFF(YEAR,birthday,NOW()) as age,count(1) as value FROM user GROUP BY age
     </select>
     <resultMap id="ageGroupMap" type="java.util.Map">
-        <result property="age" column="age" jdbcType="VARCHAR"/>
-        <result property="COUNT(1)" column="COUNT(1)" jdbcType="VARCHAR"/>
+        <result property="name" column="age" jdbcType="VARCHAR"/>
+        <result property="value" column="value" jdbcType="VARCHAR"/>
     </resultMap>
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">

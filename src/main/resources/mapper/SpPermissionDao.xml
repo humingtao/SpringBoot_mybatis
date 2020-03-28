@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.SpringBoot_mybatis.dao.SpPermissionDao">
+
+    <resultMap type="com.example.SpringBoot_mybatis.entity.SpPermission" id="SpPermissionMap">
+        <result property="psId" column="ps_id" jdbcType="VARCHAR"/>
+        <result property="psName" column="ps_name" jdbcType="VARCHAR"/>
+        <result property="psPid" column="ps_pid" jdbcType="VARCHAR"/>
+        <result property="psC" column="ps_c" jdbcType="VARCHAR"/>
+        <result property="psA" column="ps_a" jdbcType="VARCHAR"/>
+        <result property="psLevel" column="ps_level" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SpPermissionMap">
+        select
+          ps_id, ps_name, ps_pid, ps_c, ps_a, ps_level
+        from mybatis.sp_permission
+        where ps_id = #{psId}
+    </select>
+
+    <select id="getAll" resultMap="SpPermissionMap">
+        select * from mybatis.sp_permission
+        <where>
+            <if test="_parameter != null and _parameter != ''">
+                and psName = #{psName}
+            </if>
+        </where>
+    </select>
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SpPermissionMap">
+        select
+          ps_id, ps_name, ps_pid, ps_c, ps_a, ps_level
+        from mybatis.sp_permission
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SpPermissionMap">
+        select
+          ps_id, ps_name, ps_pid, ps_c, ps_a, ps_level
+        from mybatis.sp_permission
+        <where>
+            <if test="psId != null and psId != ''">
+                and ps_id = #{psId}
+            </if>
+            <if test="psName != null and psName != ''">
+                and ps_name = #{psName}
+            </if>
+            <if test="psPid != null and psPid != ''">
+                and ps_pid = #{psPid}
+            </if>
+            <if test="psC != null and psC != ''">
+                and ps_c = #{psC}
+            </if>
+            <if test="psA != null and psA != ''">
+                and ps_a = #{psA}
+            </if>
+            <if test="psLevel != null and psLevel != ''">
+                and ps_level = #{psLevel}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="psId" useGeneratedKeys="true">
+        insert into mybatis.sp_permission(ps_name, ps_pid, ps_c, ps_a, ps_level)
+        values (#{psName}, #{psPid}, #{psC}, #{psA}, #{psLevel})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mybatis.sp_permission
+        <set>
+            <if test="psName != null and psName != ''">
+                ps_name = #{psName},
+            </if>
+            <if test="psPid != null and psPid != ''">
+                ps_pid = #{psPid},
+            </if>
+            <if test="psC != null and psC != ''">
+                ps_c = #{psC},
+            </if>
+            <if test="psA != null and psA != ''">
+                ps_a = #{psA},
+            </if>
+            <if test="psLevel != null and psLevel != ''">
+                ps_level = #{psLevel},
+            </if>
+        </set>
+        where ps_id = #{psId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mybatis.sp_permission where ps_id = #{psId}
+    </delete>
+
+</mapper>
