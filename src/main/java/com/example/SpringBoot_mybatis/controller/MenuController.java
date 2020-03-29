@@ -26,8 +26,8 @@ public class MenuController {
 
         JSONObject jsonObjectChirden1 = new JSONObject();
         jsonObjectChirden1.put("id","1");
-        jsonObjectChirden1.put("authName","进入首页");
-        jsonObjectChirden1.put("path","welcome");
+        jsonObjectChirden1.put("authName","信息列表");
+        jsonObjectChirden1.put("path","info");
         jsonObjectChirden1.put("children",null);
         JSONArray jsonArray2 = new JSONArray();
         jsonArray2.add(jsonObjectChirden1);
@@ -35,7 +35,7 @@ public class MenuController {
 
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("id","110");
-        jsonObject1.put("authName","首页");
+        jsonObject1.put("authName","个人信息");
         jsonObject1.put("path",null);
         jsonObject1.put("children",jsonArray2);
         jsonObject1.put("order","2");
