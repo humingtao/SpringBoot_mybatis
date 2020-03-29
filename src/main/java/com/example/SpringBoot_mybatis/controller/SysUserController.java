@@ -1,5 +1,6 @@
 package com.example.SpringBoot_mybatis.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.SpringBoot_mybatis.annotation.UserLoginToken;
 import com.example.SpringBoot_mybatis.enmu.ResultCode;
@@ -44,9 +45,11 @@ public class SysUserController {
         SysUser sysUser = sysUserService.queryById(id);
         boolean b = Optional.ofNullable(sysUser).isPresent();
         if (b) {
-            return Result.retOK(sysUser);
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.add(sysUser);
+            return Result.retOK(jsonArray);
         } else {
-            return Result.retOK();
+            return Result.retFail(ResultCode.ERROR);
         }
     }
 
